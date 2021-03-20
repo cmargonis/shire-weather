@@ -41,7 +41,7 @@ private val DarkColorPalette = darkColors(
     onPrimary = white,
     surface = primaryDark,
     onSurface = white,
-    background = black,
+    background = gray900,
     onBackground = white
 )
 
