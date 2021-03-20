@@ -15,12 +15,29 @@
  */
 package com.example.androiddevchallenge.home
 
-import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import app.cash.turbine.test
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runBlockingTest
+import org.junit.Assert.assertEquals
+import org.junit.Before
+import org.junit.Test
+import kotlin.time.ExperimentalTime
 
-class HomeViewModel : ViewModel() {
+@ExperimentalCoroutinesApi
+@ExperimentalTime
+class HomeViewModelTest {
 
-    private val _homeState = MutableStateFlow<HomeState>(HomeState.Loading)
-    val homeState: StateFlow<HomeState> = _homeState
+    private lateinit var testedClass: HomeViewModel
+
+    @Before
+    fun setup() {
+        testedClass = HomeViewModel()
+    }
+
+    @Test
+    fun `when initializing, then emit loading state`() = runBlockingTest {
+        testedClass.homeState.test {
+            assertEquals(HomeState.Loading, expectItem())
+        }
+    }
 }
