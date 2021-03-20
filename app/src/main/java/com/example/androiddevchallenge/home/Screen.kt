@@ -21,11 +21,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.androiddevchallenge.MyApp
 import com.example.androiddevchallenge.ui.theme.MyTheme
+import com.example.androiddevchallenge.ui.widget.Loading
 import dev.chrisbanes.accompanist.insets.statusBarsPadding
 
 @Composable
 fun HomeContent() {
     Text(text = "Ready... Set... GO!", modifier = Modifier.statusBarsPadding())
+    Loading()
 }
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
@@ -33,7 +35,6 @@ fun HomeContent() {
 fun LightPreview() {
     MyTheme {
         MyApp()
-
     }
 }
 
